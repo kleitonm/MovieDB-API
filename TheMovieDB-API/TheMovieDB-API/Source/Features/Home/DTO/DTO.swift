@@ -22,6 +22,7 @@ struct MovieResult: Codable, Equatable {
     let originalLanguage: String?
     let originalTitle: String
     let overview: String?
+    let posterPath: String?
     let releaseDate: String?
     let title: String?
     let voteAverage: Double?

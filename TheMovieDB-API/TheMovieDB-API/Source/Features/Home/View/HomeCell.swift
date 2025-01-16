@@ -62,6 +62,14 @@ final class HomeCell: UITableViewCell {
 }
 
 extension HomeCell {
+    private func didDownloadImage(url: String) {
+        if let url = URL(string: "https://image.tmdb.org/t/p/w500\(url).jpg") {
+            image.load(urlImage: url, mode: .scaleAspectFit)
+        }
+    }
+}
+
+extension HomeCell {
     private func builViews() {
         contentView.addSubview(image)
         contentView.addSubview(titleLabel)
