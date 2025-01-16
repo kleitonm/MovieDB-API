@@ -8,13 +8,13 @@ import UIKit
 
 protocol HomeViewModelProtocol {
     func handler(completion: @escaping(Result<Movie, Error>) -> Void)
-    var allMovies: Observable<[MovieResult] { get }>
+    var allMovies: Observable<[MovieResult]> { get }
 }
 
 final class HomeViewModel {
     private let service: HomeServiceProtocol
     private var movie: [MovieResult] = []
-    private var observable: Observable<MovieResult> = Observable([])
+    private var observable: Observable<[MovieResult]> = Observable([])
     private var loading: Observable<Bool> = Observable(false)
     
     init(service: HomeServiceProtocol) {
