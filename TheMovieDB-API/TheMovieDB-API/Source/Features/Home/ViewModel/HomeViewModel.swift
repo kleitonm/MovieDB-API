@@ -23,12 +23,16 @@ final class HomeViewModel {
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
+    var allMovies: Observable<[MovieResult]> {
+        return observable
+    }
+    
     func handler(completion: @escaping (Result<Movie, any Error>) -> Void) {
         loading.value = true
         service.fetchData { result in
             switch result {
             case .success(let movie):
-                self?.loading.value = false
+                self.loading.value = false
                 completion(.success(movie))
             case .failure(let failure):
                 completion(.failure(failure))
