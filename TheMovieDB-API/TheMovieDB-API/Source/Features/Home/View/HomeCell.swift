@@ -8,7 +8,7 @@ import UIKit
 
 final class HomeCell: UITableViewCell {
     
-    static var identidier: String {
+    static var identifier: String {
         String(describing: self)
     }
     
@@ -42,6 +42,11 @@ final class HomeCell: UITableViewCell {
         return label
     }()
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         image.image = nil
@@ -69,14 +74,14 @@ extension HomeCell {
     }
 }
 
-extension HomeCell {
-    private func builViews() {
+extension HomeCell: ViewConfig {
+    func buildHierarchy() {
         contentView.addSubview(image)
         contentView.addSubview(titleLabel)
         contentView.addSubview(overviewLabel)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             image.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -97,7 +102,7 @@ extension HomeCell {
         ])
     }
     
-    private func extraSetup() {
+    func applyAdditionalChanges() {
         backgroundColor = .systemBackground
     }
 }

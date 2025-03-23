@@ -9,7 +9,7 @@ import Foundation
 
 struct Movie: Codable, Equatable {
     let page: Int
-    let result: [MovieResult]
+    let results: [MovieResult]
     let totalPages: Int?
     let totalResults: Int?
 }

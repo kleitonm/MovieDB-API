@@ -9,7 +9,9 @@ import UIKit
 
 enum HomeFactory {
     static func make() -> UIViewController {
-        let controller = HomeViewController()
+        let service = HomeService()
+        let viewModel = HomeViewModel(service: service)
+        let controller = HomeViewController(viewModel: viewModel)
         return controller
     }
 }
